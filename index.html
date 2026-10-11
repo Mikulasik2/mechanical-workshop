@@ -1,0 +1,231 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Mechanical Workshop Trailer Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a workshop production sheet. Riveted steel panels, brass stencil labels, timecodes in mono; one deliberate dark look that matches the game. */
+:root {
+  --bg: #0e1114;          /* STEEL_DARKEST from the game palette */
+  --panel: #161b20;
+  --panel-2: #1d242b;
+  --rule: #2c353e;
+  --fg: #dde1e5;          /* TEXT */
+  --dim: #8a949e;         /* TEXT_DIM */
+  --brass: #b38d3c;       /* BRASS */
+  --brass-l: #e0c07a;     /* BRASS_LIGHT */
+  --lamp: #ffd27a;        /* LAMP_ON */
+  --green: #8fcf6f;       /* SIGNAL_GREEN */
+  --f-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 15px/1.6 var(--f-body); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; gap: 44px; }
+a { color: var(--brass-l); }
+h1, h2, h3 { font-family: var(--f-display); text-transform: uppercase; letter-spacing: 0.06em; margin: 0; text-wrap: balance; font-weight: 700; }
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 0.95; color: var(--brass-l); }
+h2 { font-size: 1.7rem; color: var(--fg); display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+h2 .tag { font: 500 0.78rem/1 var(--f-mono); color: var(--brass); letter-spacing: 0.08em; border: 1px solid var(--brass); padding: 4px 7px; border-radius: 3px; }
+h3 { font-size: 1.15rem; color: var(--brass-l); font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+.dim { color: var(--dim); }
+.eyebrow { font: 600 0.8rem/1 var(--f-display); letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
+section { display: grid; gap: 18px; }
+
+header.top { display: grid; gap: 14px; padding-bottom: 26px; border-bottom: 1px solid var(--rule); }
+.loop { font: 600 1.05rem/1.2 var(--f-display); letter-spacing: 0.14em; text-transform: uppercase; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; color: var(--fg); }
+.loop span.arrow { color: var(--brass); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 500 0.78rem/1 var(--f-mono); color: var(--fg); background: var(--panel-2); border: 1px solid var(--rule); padding: 7px 10px; border-radius: 3px; }
+.chip b { color: var(--green); font-weight: 500; }
+
+.players { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.player { display: grid; gap: 10px; min-width: 0; }
+.player video { width: 100%; max-width: 100%; display: block; background: #000; border: 1px solid var(--rule); border-radius: 4px; }
+.player.v video { max-height: 640px; aspect-ratio: 9 / 16; object-fit: contain; }
+.player .cap { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font: 500 0.8rem/1.3 var(--f-mono); color: var(--dim); }
+.player .cap strong { color: var(--fg); font-weight: 500; }
+
+.panel { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 20px; display: grid; gap: 12px; position: relative; }
+.panel::before, .panel::after { content: ""; position: absolute; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: #3a444e; box-shadow: inset 0 1px 0 #59656f; }
+.panel::before { left: 8px; } .panel::after { right: 8px; }
+
+.edl { overflow-x: auto; border: 1px solid var(--rule); border-radius: 4px; }
+table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 0.9rem; }
+th { font: 600 0.78rem/1.2 var(--f-display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); text-align: left; padding: 10px 12px; background: var(--panel-2); border-bottom: 1px solid var(--rule); }
+td { padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.tc { font: 500 0.85rem/1.4 var(--f-mono); color: var(--brass-l); white-space: nowrap; font-variant-numeric: tabular-nums; }
+td.src { font: 400 0.8rem/1.45 var(--f-mono); color: var(--dim); white-space: nowrap; }
+td.ov { font: 600 0.95rem/1.3 var(--f-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); }
+td.ov.none { color: var(--dim); font: 400 0.85rem var(--f-body); letter-spacing: 0; text-transform: none; }
+tr.beat td:first-child { box-shadow: inset 3px 0 0 var(--brass); }
+.speed { display: inline-block; font: 500 0.72rem/1 var(--f-mono); color: var(--bg); background: var(--brass); padding: 3px 5px; border-radius: 2px; margin-left: 6px; vertical-align: 1px; }
+
+.stills { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+figure { margin: 0; display: grid; gap: 6px; min-width: 0; }
+figure img { width: 100%; display: block; border: 1px solid var(--rule); border-radius: 3px; aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
+figcaption { font-size: 0.85rem; color: var(--dim); }
+figcaption b { color: var(--fg); font-weight: 500; }
+
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+ul.plain { margin: 0; padding-left: 1.1em; display: grid; gap: 7px; }
+ul.plain li { padding-left: 2px; }
+ul.plain li::marker { color: var(--brass); }
+.rank { display: grid; gap: 10px; counter-reset: r; margin: 0; padding: 0; list-style: none; }
+.rank li { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 10px; align-items: baseline; counter-increment: r; }
+.rank li::before { content: counter(r, decimal-leading-zero); font: 600 1.25rem/1 var(--f-display); color: var(--brass); }
+.rank b { color: var(--fg); }
+code { font: 0.85em var(--f-mono); color: var(--brass-l); background: var(--panel-2); padding: 1px 5px; border-radius: 3px; }
+.note { border-left: 3px solid var(--brass); padding: 4px 0 4px 14px; color: var(--dim); max-width: 75ch; }
+.note b { color: var(--fg); }
+footer { color: var(--dim); font-size: 0.85rem; border-top: 1px solid var(--rule); padding-top: 18px; }
+
+@media (max-width: 760px) {
+  .players { grid-template-columns: minmax(0, 1fr); }
+  .player.v { max-width: 360px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">Trailer kit · Prototype v0.30 · Android</div>
+  <h1>Mechanical Workshop</h1>
+  <div class="loop" aria-label="Trailer arc">
+    <span>Build</span><span class="arrow">→</span><span>Connect</span><span class="arrow">→</span><span>Press play</span><span class="arrow">→</span><span>Watch the machine work</span>
+  </div>
+  <p class="dim">Both cuts are made from real gameplay. Godot 4.7.2 Movie Maker recorded the game frame by frame, with its own sound. The game files were not changed. A small recording script ran in a separate copy of the project and drove the game with ordinary mouse input.</p>
+  <div class="facts">
+    <span class="chip">Hero: L30 The Great Workshop</span>
+    <span class="chip">16 parts · 4 ropes and belts</span>
+    <span class="chip">Run 12.3 s · <b>3 ★</b></span>
+    <span class="chip">1920×1080 · 30 fps · game audio</span>
+  </div>
+</header>
+
+<section>
+  <h2>The two cuts</h2>
+  <div class="players">
+    <div class="player">
+      <video controls preload="metadata" playsinline poster="media/poster_h.jpg" src="media/mechanical_workshop_trailer_16x9.mp4"></video>
+      <div class="cap"><strong>16:9 trailer</strong><span>20.6 s · 1920×1080 · H.264 + AAC</span></div>
+    </div>
+    <div class="player v">
+      <video controls preload="metadata" playsinline poster="media/poster_v.jpg" src="media/mechanical_workshop_shorts_9x16.mp4"></video>
+      <div class="cap"><strong>9:16 Shorts / Reels / TikTok</strong><span>18.1 s · 1080×1920</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>16:9 shot list <span class="tag">20.6 s</span></h2>
+  <p class="dim">Source times refer to the raw captures: <code>l30</code> is Level 30, built live and then run; <code>l20</code> is a Level 20 run; <code>ws</code> is the Workshop running a copy of the Crazy Machine demo.</p>
+  <div class="edl">
+    <table>
+      <thead><tr><th>Trailer</th><th>Shot</th><th>Source</th><th>Text overlay</th></tr></thead>
+      <tbody>
+        <tr class="beat"><td class="tc">0.00–1.80</td><td><b>Hook.</b> Close-up of the L20 power section, cropped and scaled 1.5×: the motor, the big gear, and the belt to the 120 RPM generator, all turning. No menus.</td><td class="src">l20 4.0–5.8</td><td class="ov">Can you build a machine<br>that actually works?</td></tr>
+        <tr><td class="tc">1.80–2.80</td><td>A small gear is dragged out of the tray and snaps onto the master generator's gear shaft.</td><td class="src">l30 3.4–4.4</td><td class="ov">Build</td></tr>
+        <tr><td class="tc">2.80–3.60</td><td>A pulley is dropped onto the left pulley mount.</td><td class="src">l30 8.1–8.9</td><td class="ov">Build</td></tr>
+        <tr><td class="tc">3.60–4.50</td><td>BELT tool: tap the LINE DRIVE, tap the new gear, then "Belt connected."<span class="speed">1.33×</span></td><td class="src">l30 6.0–7.2</td><td class="ov">Connect</td></tr>
+        <tr><td class="tc">4.50–5.50</td><td>ROPE tool: from the gate hook, over the fixed pulley and your pulley, down to the weight.<span class="speed">2×</span></td><td class="src">l30 12.6–14.6</td><td class="ov">Connect</td></tr>
+        <tr><td class="tc">5.50–6.20</td><td>Tap PLAY.</td><td class="src">l30 15.7–16.4</td><td class="ov">Press play</td></tr>
+        <tr class="beat"><td class="tc">6.20–12.50</td><td><b>The star shot.</b> The full 12.3 s run of L30 in one uncut take. The motor drives the gears and belt; the tower hatch drops its weight; the 9 kg gate lifts; the fan pushes the ball; the ball runs down the chute into the dominoes; the crate falls onto the spring and is launched; the CRATE switch starts the LINE DRIVE, which spins the master generator.<span class="speed">2×</span></td><td class="src">l30 16.4–29.0</td><td class="ov">Watch it work <span class="dim" style="font:400 .8rem var(--f-body);text-transform:none;letter-spacing:0">(6.7–8.5, over the tray)</span></td></tr>
+        <tr class="beat"><td class="tc">12.50–14.50</td><td><b>Finale.</b> The dark hall comes alive: the MAIN LIGHT turns on, then the hall lamps one after another. Real time.</td><td class="src">l30 29.0–31.0</td><td class="ov none">none: the lamps carry it</td></tr>
+        <tr><td class="tc">14.50–15.80</td><td>The game's own MACHINE COMPLETE panel: 3 stars, 12.3 s, 16 parts.</td><td class="src">l30 34.0–35.3</td><td class="ov none">none (the panel is the title)</td></tr>
+        <tr class="beat"><td class="tc">15.80–18.20</td><td>WORKSHOP sandbox: the Crazy Machine copy runs. The ∞ tray and both lamps are on screen.</td><td class="src">ws 2.1–4.5</td><td class="ov">Build your own machines<br><span style="font-size:.8rem;color:var(--dim)">Workshop sandbox · every part, unlimited</span></td></tr>
+        <tr><td class="tc">18.20–20.60</td><td>End card over a blurred frame of the lit finale, with a slow 2.5 % push-in. Sound: the game's own lamp click and lamp-on.</td><td class="src">card</td><td class="ov">Mechanical Workshop<br><span style="font-size:.85rem">Physics Puzzle &amp; Machine Building Game · Android</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>9:16 shot list <span class="tag">18.1 s</span></h2>
+  <p class="dim">The full 16:9 frame sits centred at 1080×608 and is never cropped. Above and below it, a blurred, darkened copy of the same shot fills the frame, edged by thin brass rules. Captions sit in the top band. The secondary line sits in the bottom band, clear of the Shorts and Reels buttons.</p>
+  <div class="edl">
+    <table>
+      <thead><tr><th>Trailer</th><th>Shot</th><th>Source</th><th>Caption</th></tr></thead>
+      <tbody>
+        <tr class="beat"><td class="tc">0.00–2.00</td><td><b>Hook.</b> L20 power-section close-up.</td><td class="src">l20 4.0–6.0</td><td class="ov">I built a machine…</td></tr>
+        <tr><td class="tc">2.00–3.00</td><td>Gear dragged in and snapped onto the shaft.</td><td class="src">l30 3.4–4.4</td><td class="ov">Build</td></tr>
+        <tr><td class="tc">3.00–3.90</td><td>Belt connected.<span class="speed">1.33×</span></td><td class="src">l30 6.0–7.2</td><td class="ov">Connect</td></tr>
+        <tr><td class="tc">3.90–4.90</td><td>Rope routed over two pulleys.<span class="speed">2×</span></td><td class="src">l30 12.6–14.6</td><td class="ov">Connect</td></tr>
+        <tr><td class="tc">4.90–5.60</td><td>Tap PLAY.</td><td class="src">l30 15.7–16.4</td><td class="ov">Press play</td></tr>
+        <tr class="beat"><td class="tc">5.60–11.90</td><td>Full uncut run.<span class="speed">2×</span></td><td class="src">l30 16.4–29.0</td><td class="ov">Level 30 · The Great Workshop<br><span style="color:var(--brass-l)">bottom: 16 parts · 5 stages / one button</span></td></tr>
+        <tr class="beat"><td class="tc">11.90–14.40</td><td>The lamps come on.</td><td class="src">l30 29.0–31.5</td><td class="ov" style="color:var(--lamp)">…and it actually worked.</td></tr>
+        <tr><td class="tc">14.40–15.70</td><td>MACHINE COMPLETE, 3 stars.</td><td class="src">l30 34.0–35.3</td><td class="ov">(caption holds)</td></tr>
+        <tr><td class="tc">15.70–18.10</td><td>Vertical end card.</td><td class="src">card</td><td class="ov">Mechanical Workshop · Android</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note"><b>Hook change.</b> I split your line in two. "I built a machine…" opens the video, and "…and it actually worked." lands exactly when the lamps come on. The open sentence gives viewers a reason to stay to the end, which matters most on Shorts. A bottom-band line, "16 parts · 5 stages · one button", tells viewers what they are watching while the machine runs.</p>
+</section>
+
+<section>
+  <h2>Stills</h2>
+  <div class="stills">
+    <figure><img src="media/01_hook_power_section_L20.jpg" alt="Level 20 power section: motor, large gear, belt and generator at 120 RPM" loading="lazy"><figcaption><b>Hook.</b> L20 power section in motion.</figcaption></figure>
+    <figure><img src="media/02_build_gear_snaps_onto_master_generator.jpg" alt="Small gear placed on the master generator shaft in Level 30" loading="lazy"><figcaption><b>Build.</b> Gear snaps onto the master generator.</figcaption></figure>
+    <figure><img src="media/03_connect_belt_line_drive.jpg" alt="Belt connected from the line drive to the gear" loading="lazy"><figcaption><b>Connect.</b> Belt from the LINE DRIVE.</figcaption></figure>
+    <figure><img src="media/04_connect_rope_over_pulleys.jpg" alt="Rope routed from the heavy gate over two pulleys to a weight" loading="lazy"><figcaption><b>Connect.</b> Rope over two pulleys.</figcaption></figure>
+    <figure><img src="media/05_run_ball_route.jpg" alt="Level 30 running: ball on the route towards the dominoes" loading="lazy"><figcaption><b>Run.</b> Ball route, before the lights.</figcaption></figure>
+    <figure><img src="media/06_finale_hall_lamps.jpg" alt="Level 30 finale with the main light and hall lamps on" loading="lazy"><figcaption><b>Finale.</b> Hall lamps lit; the strongest single frame.</figcaption></figure>
+    <figure><img src="media/07_machine_complete_3_stars.jpg" alt="Machine complete panel with three stars" loading="lazy"><figcaption><b>Payoff.</b> MACHINE COMPLETE, 3 stars.</figcaption></figure>
+    <figure><img src="media/08_workshop_crazy_machine.jpg" alt="Workshop sandbox running the Crazy Machine copy" loading="lazy"><figcaption><b>Sandbox.</b> Crazy Machine copy running.</figcaption></figure>
+    <figure><img src="media/09_end_card_16x9.jpg" alt="16:9 end card" loading="lazy"><figcaption><b>End card,</b> 16:9.</figcaption></figure>
+  </div>
+</section>
+
+<section class="cols">
+  <div class="panel">
+    <h3>What to record, and why</h3>
+    <ul class="plain">
+      <li><b>L30 The Great Workshop</b> is the hero. It has all five stations, from POWER to FINAL ACTIVATION, with gears, belts, two ropes, pulleys, weights, a fan, the ball, dominoes, the crate, a spring, a switch, the LINE DRIVE and the generator. The room stays dark until the end, then the lamps light one by one. No other level has that payoff.</li>
+      <li><b>L20 Master Contraption II</b> gives the hook close-up. Its power section has the biggest gears and a visible belt, close together, and they turn from the first frame.</li>
+      <li><b>Workshop → Demo Machines → Crazy Machine</b>, opened with EDIT COPY, not PLAY DEMO. That way the ∞ tray and the SAVE button are on screen, which reads as "your own sandbox".</li>
+      <li>Backups: <b>L28 Factory Control</b> (the room lights up system by system) and <b>L21 Double Drive</b> (one motor, a drawbridge, a single strong lamp).</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>Strongest moments</h3>
+    <ol class="rank">
+      <li><span><b>L30 lamps:</b> the dark hall lighting up lamp by lamp. This is the emotional peak, so show it in real time.</span></li>
+      <li><span><b>Gear snap:</b> a dragged gear clicks into mesh with a brass flash. It shows the main idea in one second.</span></li>
+      <li><span><b>Crate launch:</b> the spring throws the crate up to the CRATE LIFT switch, and the LINE DRIVE starts.</span></li>
+      <li><span><b>9 kg gate lift:</b> two weights fall on ropes and the gate rises slowly and heavily.</span></li>
+      <li><span><b>MACHINE COMPLETE</b> with all three stars ticking in.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="cols">
+  <div class="panel">
+    <h3>Audio</h3>
+    <ul class="plain">
+      <li>All sound in both cuts is the game's own. It was recorded with the picture: motor start, gear layer, belt, pulley, rope creak, impacts, spring, switch click, lamp buzz and level complete. The end card uses the game's own <code>lamp_click</code>, <code>lamp_on</code> and room tone. The hook adds the game's <code>motor_start</code> at 55 %.</li>
+      <li>In the 2× sections the sound is sped up with a time-stretch, so pitch stays natural.</li>
+      <li>No music is used. If you add some, look for a minimal, slow industrial pulse around 90–100 BPM. Use a muted kick and low synth bass, with metallic percussion that leaves room for the gear clicks. Bring in one warm pad when the lamps turn on. Use only a track you own or have licensed.</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>Production notes</h3>
+    <ul class="plain">
+      <li>On screen, the gear, pulley, weight, belt and rope are placed live with real mouse input. The other 11 parts of the 16-part machine were already in place when recording started. The run is the game's own known 3-star solution, and the result it shows (12.3 s, 3 stars) is genuine.</li>
+      <li>The soft ring that shows where the finger is was drawn by the recording script. It is not part of the game UI. Mobile trailers normally show a touch marker like this.</li>
+      <li>The run is shown at 2×. It is honest editing, but if store rules or your own preference call for it, add a small "2× SPEED" tag in the corner. Do not slow the lamp finale down.</li>
+      <li>Fonts: Inter Display (OFL) for the overlays. Colours come from <code>scripts/visual/palette.gd</code>: BRASS_LIGHT, LAMP_ON and STEEL_DARKEST.</li>
+      <li>Google Play rules: if this goes on the store listing, store pages usually crop or play the video at 16:9. The end card's "ANDROID" text is not the official Google Play badge. Use the official badge only under Google's badge guidelines.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>Recorded from Mechanical Workshop Prototype v0.30 using Godot 4.7.2 Movie Maker (Compatibility renderer). The recording toolkit is attached in the chat: the capture script, cut list and caption generator, so you can re-record after the game changes.</footer>
+</div>
+
+</body></html>
