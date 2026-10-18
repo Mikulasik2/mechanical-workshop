@@ -1,231 +1,458 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Mechanical Workshop Trailer Kit</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: a workshop production sheet. Riveted steel panels, brass stencil labels, timecodes in mono; one deliberate dark look that matches the game. */
-:root {
-  --bg: #0e1114;          /* STEEL_DARKEST from the game palette */
-  --panel: #161b20;
-  --panel-2: #1d242b;
-  --rule: #2c353e;
-  --fg: #dde1e5;          /* TEXT */
-  --dim: #8a949e;         /* TEXT_DIM */
-  --brass: #b38d3c;       /* BRASS */
-  --brass-l: #e0c07a;     /* BRASS_LIGHT */
-  --lamp: #ffd27a;        /* LAMP_ON */
-  --green: #8fcf6f;       /* SIGNAL_GREEN */
-  --f-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
-  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  color-scheme: dark;
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mechanical Workshop – Physics Puzzle &amp; Machine Building Game</title>
+<meta name="description" content="Mechanical Workshop is a physics puzzle and machine-building game for Android by MikiForge Studio. Build working contraptions with gears, motors, pulleys, ropes, springs and weights, then press PLAY.">
+<meta name="author" content="MikiForge Studio">
+<meta name="theme-color" content="#0e1114">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://mikulasik2.github.io/mechanical-workshop/">
+
+<!-- Open Graph / social previews (absolute URLs are required here) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mechanical Workshop">
+<meta property="og:title" content="Mechanical Workshop – Physics Puzzle &amp; Machine Building Game">
+<meta property="og:description" content="Build it. Connect it. Press PLAY. A physics puzzle game for Android where you build working machines from gears, motors, pulleys, ropes, springs and weights.">
+<meta property="og:url" content="https://mikulasik2.github.io/mechanical-workshop/">
+<meta property="og:image" content="https://mikulasik2.github.io/mechanical-workshop/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mechanical Workshop gameplay: a running machine of gears, belts, pulleys and lit lamps">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mechanical Workshop – Physics Puzzle &amp; Machine Building Game">
+<meta name="twitter:description" content="Build it. Connect it. Press PLAY. A physics machine-building puzzle game for Android.">
+<meta name="twitter:image" content="https://mikulasik2.github.io/mechanical-workshop/assets/img/og-image.jpg">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<link rel="preload" as="image" type="image/webp"
+      imagesrcset="assets/img/shots/workshop-running-800.webp 800w, assets/img/shots/workshop-running-1600.webp 1600w"
+      imagesizes="(min-width: 960px) 60vw, 100vw">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Mechanical Workshop",
+  "url": "https://mikulasik2.github.io/mechanical-workshop/",
+  "image": "https://mikulasik2.github.io/mechanical-workshop/assets/img/og-image.jpg",
+  "description": "A physics puzzle and machine-building game where you create working mechanical contraptions using gears, motors, pulleys, ropes, springs, weights and more.",
+  "genre": ["Puzzle", "Physics", "Simulation"],
+  "gamePlatform": "Android",
+  "operatingSystem": "Android",
+  "applicationCategory": "Game",
+  "author": { "@type": "Organization", "name": "MikiForge Studio" },
+  "publisher": { "@type": "Organization", "name": "MikiForge Studio" }
 }
-* { box-sizing: border-box; }
-body { background: var(--bg); color: var(--fg); font: 15px/1.6 var(--f-body); }
-.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; gap: 44px; }
-a { color: var(--brass-l); }
-h1, h2, h3 { font-family: var(--f-display); text-transform: uppercase; letter-spacing: 0.06em; margin: 0; text-wrap: balance; font-weight: 700; }
-h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 0.95; color: var(--brass-l); }
-h2 { font-size: 1.7rem; color: var(--fg); display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-h2 .tag { font: 500 0.78rem/1 var(--f-mono); color: var(--brass); letter-spacing: 0.08em; border: 1px solid var(--brass); padding: 4px 7px; border-radius: 3px; }
-h3 { font-size: 1.15rem; color: var(--brass-l); font-weight: 600; }
-p { margin: 0; max-width: 68ch; }
-.dim { color: var(--dim); }
-.eyebrow { font: 600 0.8rem/1 var(--f-display); letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
-section { display: grid; gap: 18px; }
+</script>
+</head>
+<body>
 
-header.top { display: grid; gap: 14px; padding-bottom: 26px; border-bottom: 1px solid var(--rule); }
-.loop { font: 600 1.05rem/1.2 var(--f-display); letter-spacing: 0.14em; text-transform: uppercase; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; color: var(--fg); }
-.loop span.arrow { color: var(--brass); }
-.facts { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font: 500 0.78rem/1 var(--f-mono); color: var(--fg); background: var(--panel-2); border: 1px solid var(--rule); padding: 7px 10px; border-radius: 3px; }
-.chip b { color: var(--green); font-weight: 500; }
+<a class="skip" href="#main">Skip to content</a>
 
-.players { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); gap: 20px; align-items: start; }
-.player { display: grid; gap: 10px; min-width: 0; }
-.player video { width: 100%; max-width: 100%; display: block; background: #000; border: 1px solid var(--rule); border-radius: 4px; }
-.player.v video { max-height: 640px; aspect-ratio: 9 / 16; object-fit: contain; }
-.player .cap { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font: 500 0.8rem/1.3 var(--f-mono); color: var(--dim); }
-.player .cap strong { color: var(--fg); font-weight: 500; }
-
-.panel { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 20px; display: grid; gap: 12px; position: relative; }
-.panel::before, .panel::after { content: ""; position: absolute; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: #3a444e; box-shadow: inset 0 1px 0 #59656f; }
-.panel::before { left: 8px; } .panel::after { right: 8px; }
-
-.edl { overflow-x: auto; border: 1px solid var(--rule); border-radius: 4px; }
-table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 0.9rem; }
-th { font: 600 0.78rem/1.2 var(--f-display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); text-align: left; padding: 10px 12px; background: var(--panel-2); border-bottom: 1px solid var(--rule); }
-td { padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
-tr:last-child td { border-bottom: 0; }
-td.tc { font: 500 0.85rem/1.4 var(--f-mono); color: var(--brass-l); white-space: nowrap; font-variant-numeric: tabular-nums; }
-td.src { font: 400 0.8rem/1.45 var(--f-mono); color: var(--dim); white-space: nowrap; }
-td.ov { font: 600 0.95rem/1.3 var(--f-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); }
-td.ov.none { color: var(--dim); font: 400 0.85rem var(--f-body); letter-spacing: 0; text-transform: none; }
-tr.beat td:first-child { box-shadow: inset 3px 0 0 var(--brass); }
-.speed { display: inline-block; font: 500 0.72rem/1 var(--f-mono); color: var(--bg); background: var(--brass); padding: 3px 5px; border-radius: 2px; margin-left: 6px; vertical-align: 1px; }
-
-.stills { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-figure { margin: 0; display: grid; gap: 6px; min-width: 0; }
-figure img { width: 100%; display: block; border: 1px solid var(--rule); border-radius: 3px; aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
-figcaption { font-size: 0.85rem; color: var(--dim); }
-figcaption b { color: var(--fg); font-weight: 500; }
-
-.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
-ul.plain { margin: 0; padding-left: 1.1em; display: grid; gap: 7px; }
-ul.plain li { padding-left: 2px; }
-ul.plain li::marker { color: var(--brass); }
-.rank { display: grid; gap: 10px; counter-reset: r; margin: 0; padding: 0; list-style: none; }
-.rank li { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 10px; align-items: baseline; counter-increment: r; }
-.rank li::before { content: counter(r, decimal-leading-zero); font: 600 1.25rem/1 var(--f-display); color: var(--brass); }
-.rank b { color: var(--fg); }
-code { font: 0.85em var(--f-mono); color: var(--brass-l); background: var(--panel-2); padding: 1px 5px; border-radius: 3px; }
-.note { border-left: 3px solid var(--brass); padding: 4px 0 4px 14px; color: var(--dim); max-width: 75ch; }
-.note b { color: var(--fg); }
-footer { color: var(--dim); font-size: 0.85rem; border-top: 1px solid var(--rule); padding-top: 18px; }
-
-@media (max-width: 760px) {
-  .players { grid-template-columns: minmax(0, 1fr); }
-  .player.v { max-width: 360px; }
-}
-@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
-</style>
-
-<div class="wrap">
-
-<header class="top">
-  <div class="eyebrow">Trailer kit · Prototype v0.30 · Android</div>
-  <h1>Mechanical Workshop</h1>
-  <div class="loop" aria-label="Trailer arc">
-    <span>Build</span><span class="arrow">→</span><span>Connect</span><span class="arrow">→</span><span>Press play</span><span class="arrow">→</span><span>Watch the machine work</span>
-  </div>
-  <p class="dim">Both cuts are made from real gameplay. Godot 4.7.2 Movie Maker recorded the game frame by frame, with its own sound. The game files were not changed. A small recording script ran in a separate copy of the project and drove the game with ordinary mouse input.</p>
-  <div class="facts">
-    <span class="chip">Hero: L30 The Great Workshop</span>
-    <span class="chip">16 parts · 4 ropes and belts</span>
-    <span class="chip">Run 12.3 s · <b>3 ★</b></span>
-    <span class="chip">1920×1080 · 30 fps · game audio</span>
+<header class="nav" id="top">
+  <div class="nav__inner">
+    <a class="brand" href="#top" aria-label="Mechanical Workshop – back to top">
+      <img src="assets/img/favicon.svg" width="32" height="32" alt="">
+      <span>Mechanical<b>Workshop</b></span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a href="#gameplay">Gameplay</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#workshop">Workshop</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--small" href="#tester-dialog" data-tester-link><span data-cta-label-short><span class="hide-sm">Become a&nbsp;</span>tester</span></a>
   </div>
 </header>
 
-<section>
-  <h2>The two cuts</h2>
-  <div class="players">
-    <div class="player">
-      <video controls preload="metadata" playsinline poster="media/poster_h.jpg" src="media/mechanical_workshop_trailer_16x9.mp4"></video>
-      <div class="cap"><strong>16:9 trailer</strong><span>20.6 s · 1920×1080 · H.264 + AAC</span></div>
+<main id="main">
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero" aria-labelledby="hero-title">
+  <svg class="hero__gear" viewBox="0 0 100 100" aria-hidden="true"><use href="#gear"/></svg>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="badge"><span class="badge__lamp" aria-hidden="true"></span>Android • Closed testing</p>
+      <h1 id="hero-title" class="hero__title">Mechanical<br><span>Workshop</span></h1>
+      <p class="hero__tagline">Build it. Connect it. Press&nbsp;<em>PLAY</em>.</p>
+      <p class="hero__lead">A physics puzzle and machine-building game where you create working mechanical contraptions using gears, motors, pulleys, ropes, springs, weights and more.</p>
+      <div class="hero__actions">
+        <a class="btn" href="#gameplay" data-play-trailer>
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          Watch gameplay
+        </a>
+        <a class="btn btn--ghost" href="#about">About the game</a>
+      </div>
+      <p class="hero__by">by <b>MikiForge Studio</b></p>
     </div>
-    <div class="player v">
-      <video controls preload="metadata" playsinline poster="media/poster_v.jpg" src="media/mechanical_workshop_shorts_9x16.mp4"></video>
-      <div class="cap"><strong>9:16 Shorts / Reels / TikTok</strong><span>18.1 s · 1080×1920</span></div>
+    <figure class="hero__shot frame">
+      <picture>
+        <source type="image/webp" srcset="assets/img/shots/workshop-running-800.webp 800w, assets/img/shots/workshop-running-1600.webp 1600w" sizes="(min-width: 960px) 60vw, 100vw">
+        <img src="assets/img/shots/workshop-running-800.jpg" width="1600" height="720" fetchpriority="high" decoding="async"
+             alt="Gameplay screenshot: a machine running in Workshop mode, with motors, large gears, belts, pulleys, weights and two lit lamps.">
+      </picture>
+      <figcaption class="frame__label"><span class="dot" aria-hidden="true"></span>Machine running · Workshop</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 2. GAMEPLAY VIDEO ============ -->
+<section class="section" id="gameplay" aria-labelledby="gameplay-title">
+  <div class="wrap">
+    <header class="section__head section__head--center">
+      <p class="eyebrow"><span>01</span>Gameplay</p>
+      <h2 id="gameplay-title">See the machine come to life</h2>
+      <p class="section__lead">Build a solution, press PLAY, and watch the physics system simulate your machine — every gear, rope and falling weight reacts for real.</p>
+    </header>
+    <div class="player frame">
+      <!-- preload="none": the 5.7 MB file is only fetched when the visitor presses play. -->
+      <video id="trailer" controls preload="none" playsinline width="1920" height="1080"
+             poster="media/poster_h.jpg" aria-label="Mechanical Workshop gameplay trailer">
+        <source src="media/mechanical_workshop_trailer_16x9.mp4" type="video/mp4">
+        Your browser can't play this video. <a href="media/mechanical_workshop_trailer_16x9.mp4">Download the trailer (MP4)</a>.
+      </video>
+    </div>
+    <p class="player__note">Recorded from real gameplay · Level 30 “The Great Workshop” · game audio · <a href="media/mechanical_workshop_shorts_9x16.mp4">vertical 9:16 cut</a></p>
+  </div>
+</section>
+
+<!-- ============ 3. ABOUT ============ -->
+<section class="section section--plate" id="about" aria-labelledby="about-title">
+  <div class="wrap about">
+    <div class="about__copy">
+      <p class="eyebrow"><span>02</span>About the game</p>
+      <h2 id="about-title">A puzzle you solve with machinery</h2>
+      <p>Mechanical Workshop is a physics-based puzzle game where you solve mechanical challenges by placing and connecting machine parts.</p>
+      <p>Each level hands you a goal and a tray of parts. Mesh gears, power them with a motor, route a rope over pulleys, let a weight fall, launch a crate off a spring and hit the switch that lights the room. If it fails — tweak, and try again.</p>
+      <p class="about__kicker">There's no single right answer. Just mechanical experimentation.</p>
+    </div>
+
+    <div class="tray" role="list" aria-label="Machine parts in the game">
+      <div class="tray__item" role="listitem"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#gear"/></svg><span>Gears</span></div>
+      <div class="tray__item" role="listitem"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-motor"/></svg><span>Motors</span></div>
+      <div class="tray__item" role="listitem"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-pulley"/></svg><span>Pulleys</span></div>
+      <div class="tray__item" role="listitem"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-rope"/></svg><span>Ropes &amp; belts</span></div>
+      <div class="tray__item" role="listitem"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-spring"/></svg><span>Springs</span></div>
+      <div class="tray__item" role="listitem"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-weight"/></svg><span>Weights</span></div>
+      <div class="tray__item" role="listitem"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-switch"/></svg><span>Switches</span></div>
+      <div class="tray__item" role="listitem"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-fan"/></svg><span>Fans</span></div>
+      <div class="tray__item" role="listitem"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-plank"/></svg><span>Planks, balls &amp; dominoes</span></div>
     </div>
   </div>
 </section>
 
-<section>
-  <h2>16:9 shot list <span class="tag">20.6 s</span></h2>
-  <p class="dim">Source times refer to the raw captures: <code>l30</code> is Level 30, built live and then run; <code>l20</code> is a Level 20 run; <code>ws</code> is the Workshop running a copy of the Crazy Machine demo.</p>
-  <div class="edl">
-    <table>
-      <thead><tr><th>Trailer</th><th>Shot</th><th>Source</th><th>Text overlay</th></tr></thead>
-      <tbody>
-        <tr class="beat"><td class="tc">0.00–1.80</td><td><b>Hook.</b> Close-up of the L20 power section, cropped and scaled 1.5×: the motor, the big gear, and the belt to the 120 RPM generator, all turning. No menus.</td><td class="src">l20 4.0–5.8</td><td class="ov">Can you build a machine<br>that actually works?</td></tr>
-        <tr><td class="tc">1.80–2.80</td><td>A small gear is dragged out of the tray and snaps onto the master generator's gear shaft.</td><td class="src">l30 3.4–4.4</td><td class="ov">Build</td></tr>
-        <tr><td class="tc">2.80–3.60</td><td>A pulley is dropped onto the left pulley mount.</td><td class="src">l30 8.1–8.9</td><td class="ov">Build</td></tr>
-        <tr><td class="tc">3.60–4.50</td><td>BELT tool: tap the LINE DRIVE, tap the new gear, then "Belt connected."<span class="speed">1.33×</span></td><td class="src">l30 6.0–7.2</td><td class="ov">Connect</td></tr>
-        <tr><td class="tc">4.50–5.50</td><td>ROPE tool: from the gate hook, over the fixed pulley and your pulley, down to the weight.<span class="speed">2×</span></td><td class="src">l30 12.6–14.6</td><td class="ov">Connect</td></tr>
-        <tr><td class="tc">5.50–6.20</td><td>Tap PLAY.</td><td class="src">l30 15.7–16.4</td><td class="ov">Press play</td></tr>
-        <tr class="beat"><td class="tc">6.20–12.50</td><td><b>The star shot.</b> The full 12.3 s run of L30 in one uncut take. The motor drives the gears and belt; the tower hatch drops its weight; the 9 kg gate lifts; the fan pushes the ball; the ball runs down the chute into the dominoes; the crate falls onto the spring and is launched; the CRATE switch starts the LINE DRIVE, which spins the master generator.<span class="speed">2×</span></td><td class="src">l30 16.4–29.0</td><td class="ov">Watch it work <span class="dim" style="font:400 .8rem var(--f-body);text-transform:none;letter-spacing:0">(6.7–8.5, over the tray)</span></td></tr>
-        <tr class="beat"><td class="tc">12.50–14.50</td><td><b>Finale.</b> The dark hall comes alive: the MAIN LIGHT turns on, then the hall lamps one after another. Real time.</td><td class="src">l30 29.0–31.0</td><td class="ov none">none: the lamps carry it</td></tr>
-        <tr><td class="tc">14.50–15.80</td><td>The game's own MACHINE COMPLETE panel: 3 stars, 12.3 s, 16 parts.</td><td class="src">l30 34.0–35.3</td><td class="ov none">none (the panel is the title)</td></tr>
-        <tr class="beat"><td class="tc">15.80–18.20</td><td>WORKSHOP sandbox: the Crazy Machine copy runs. The ∞ tray and both lamps are on screen.</td><td class="src">ws 2.1–4.5</td><td class="ov">Build your own machines<br><span style="font-size:.8rem;color:var(--dim)">Workshop sandbox · every part, unlimited</span></td></tr>
-        <tr><td class="tc">18.20–20.60</td><td>End card over a blurred frame of the lit finale, with a slow 2.5 % push-in. Sound: the game's own lamp click and lamp-on.</td><td class="src">card</td><td class="ov">Mechanical Workshop<br><span style="font-size:.85rem">Physics Puzzle &amp; Machine Building Game · Android</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section>
-  <h2>9:16 shot list <span class="tag">18.1 s</span></h2>
-  <p class="dim">The full 16:9 frame sits centred at 1080×608 and is never cropped. Above and below it, a blurred, darkened copy of the same shot fills the frame, edged by thin brass rules. Captions sit in the top band. The secondary line sits in the bottom band, clear of the Shorts and Reels buttons.</p>
-  <div class="edl">
-    <table>
-      <thead><tr><th>Trailer</th><th>Shot</th><th>Source</th><th>Caption</th></tr></thead>
-      <tbody>
-        <tr class="beat"><td class="tc">0.00–2.00</td><td><b>Hook.</b> L20 power-section close-up.</td><td class="src">l20 4.0–6.0</td><td class="ov">I built a machine…</td></tr>
-        <tr><td class="tc">2.00–3.00</td><td>Gear dragged in and snapped onto the shaft.</td><td class="src">l30 3.4–4.4</td><td class="ov">Build</td></tr>
-        <tr><td class="tc">3.00–3.90</td><td>Belt connected.<span class="speed">1.33×</span></td><td class="src">l30 6.0–7.2</td><td class="ov">Connect</td></tr>
-        <tr><td class="tc">3.90–4.90</td><td>Rope routed over two pulleys.<span class="speed">2×</span></td><td class="src">l30 12.6–14.6</td><td class="ov">Connect</td></tr>
-        <tr><td class="tc">4.90–5.60</td><td>Tap PLAY.</td><td class="src">l30 15.7–16.4</td><td class="ov">Press play</td></tr>
-        <tr class="beat"><td class="tc">5.60–11.90</td><td>Full uncut run.<span class="speed">2×</span></td><td class="src">l30 16.4–29.0</td><td class="ov">Level 30 · The Great Workshop<br><span style="color:var(--brass-l)">bottom: 16 parts · 5 stages / one button</span></td></tr>
-        <tr class="beat"><td class="tc">11.90–14.40</td><td>The lamps come on.</td><td class="src">l30 29.0–31.5</td><td class="ov" style="color:var(--lamp)">…and it actually worked.</td></tr>
-        <tr><td class="tc">14.40–15.70</td><td>MACHINE COMPLETE, 3 stars.</td><td class="src">l30 34.0–35.3</td><td class="ov">(caption holds)</td></tr>
-        <tr><td class="tc">15.70–18.10</td><td>Vertical end card.</td><td class="src">card</td><td class="ov">Mechanical Workshop · Android</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="note"><b>Hook change.</b> I split your line in two. "I built a machine…" opens the video, and "…and it actually worked." lands exactly when the lamps come on. The open sentence gives viewers a reason to stay to the end, which matters most on Shorts. A bottom-band line, "16 parts · 5 stages · one button", tells viewers what they are watching while the machine runs.</p>
-</section>
-
-<section>
-  <h2>Stills</h2>
-  <div class="stills">
-    <figure><img src="media/01_hook_power_section_L20.jpg" alt="Level 20 power section: motor, large gear, belt and generator at 120 RPM" loading="lazy"><figcaption><b>Hook.</b> L20 power section in motion.</figcaption></figure>
-    <figure><img src="media/02_build_gear_snaps_onto_master_generator.jpg" alt="Small gear placed on the master generator shaft in Level 30" loading="lazy"><figcaption><b>Build.</b> Gear snaps onto the master generator.</figcaption></figure>
-    <figure><img src="media/03_connect_belt_line_drive.jpg" alt="Belt connected from the line drive to the gear" loading="lazy"><figcaption><b>Connect.</b> Belt from the LINE DRIVE.</figcaption></figure>
-    <figure><img src="media/04_connect_rope_over_pulleys.jpg" alt="Rope routed from the heavy gate over two pulleys to a weight" loading="lazy"><figcaption><b>Connect.</b> Rope over two pulleys.</figcaption></figure>
-    <figure><img src="media/05_run_ball_route.jpg" alt="Level 30 running: ball on the route towards the dominoes" loading="lazy"><figcaption><b>Run.</b> Ball route, before the lights.</figcaption></figure>
-    <figure><img src="media/06_finale_hall_lamps.jpg" alt="Level 30 finale with the main light and hall lamps on" loading="lazy"><figcaption><b>Finale.</b> Hall lamps lit; the strongest single frame.</figcaption></figure>
-    <figure><img src="media/07_machine_complete_3_stars.jpg" alt="Machine complete panel with three stars" loading="lazy"><figcaption><b>Payoff.</b> MACHINE COMPLETE, 3 stars.</figcaption></figure>
-    <figure><img src="media/08_workshop_crazy_machine.jpg" alt="Workshop sandbox running the Crazy Machine copy" loading="lazy"><figcaption><b>Sandbox.</b> Crazy Machine copy running.</figcaption></figure>
-    <figure><img src="media/09_end_card_16x9.jpg" alt="16:9 end card" loading="lazy"><figcaption><b>End card,</b> 16:9.</figcaption></figure>
-  </div>
-</section>
-
-<section class="cols">
-  <div class="panel">
-    <h3>What to record, and why</h3>
-    <ul class="plain">
-      <li><b>L30 The Great Workshop</b> is the hero. It has all five stations, from POWER to FINAL ACTIVATION, with gears, belts, two ropes, pulleys, weights, a fan, the ball, dominoes, the crate, a spring, a switch, the LINE DRIVE and the generator. The room stays dark until the end, then the lamps light one by one. No other level has that payoff.</li>
-      <li><b>L20 Master Contraption II</b> gives the hook close-up. Its power section has the biggest gears and a visible belt, close together, and they turn from the first frame.</li>
-      <li><b>Workshop → Demo Machines → Crazy Machine</b>, opened with EDIT COPY, not PLAY DEMO. That way the ∞ tray and the SAVE button are on screen, which reads as "your own sandbox".</li>
-      <li>Backups: <b>L28 Factory Control</b> (the room lights up system by system) and <b>L21 Double Drive</b> (one motor, a drawbridge, a single strong lamp).</li>
+<!-- ============ 4. FEATURES ============ -->
+<section class="section" id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow"><span>03</span>Features</p>
+      <h2 id="features-title">What's in the workshop</h2>
+    </header>
+    <ul class="features">
+      <li class="card">
+        <span class="card__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-levels"/></svg></span>
+        <h3>30 Puzzle Levels</h3>
+        <p>Hand-crafted campaign challenges across two chapters, from a first gear to five-stage machines.</p>
+      </li>
+      <li class="card">
+        <span class="card__icon"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#gear"/></svg></span>
+        <h3>Physics-Based Building</h3>
+        <p>Build working mechanical systems and watch them react — torque, gravity and momentum included.</p>
+      </li>
+      <li class="card">
+        <span class="card__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+        <h3>Workshop Sandbox</h3>
+        <p>Experiment freely outside campaign restrictions, with every part available and unlimited.</p>
+      </li>
+      <li class="card">
+        <span class="card__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-save"/></svg></span>
+        <h3>Save Your Machines</h3>
+        <p>Save and load your own mechanical creations, rename them, and keep building later.</p>
+      </li>
+      <li class="card">
+        <span class="card__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-branch"/></svg></span>
+        <h3>Multiple Solutions</h3>
+        <p>Many challenges can be solved in different ways. Chase stars for speed and fewer parts.</p>
+      </li>
+      <li class="card">
+        <span class="card__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-touch"/></svg></span>
+        <h3>Touch Controls</h3>
+        <p>Designed for Android phones and tablets: drag, drop, rotate and connect with one finger.</p>
+      </li>
     </ul>
   </div>
-  <div class="panel">
-    <h3>Strongest moments</h3>
-    <ol class="rank">
-      <li><span><b>L30 lamps:</b> the dark hall lighting up lamp by lamp. This is the emotional peak, so show it in real time.</span></li>
-      <li><span><b>Gear snap:</b> a dragged gear clicks into mesh with a brass flash. It shows the main idea in one second.</span></li>
-      <li><span><b>Crate launch:</b> the spring throws the crate up to the CRATE LIFT switch, and the LINE DRIVE starts.</span></li>
-      <li><span><b>9 kg gate lift:</b> two weights fall on ropes and the gate rises slowly and heavily.</span></li>
-      <li><span><b>MACHINE COMPLETE</b> with all three stars ticking in.</span></li>
+</section>
+
+<!-- ============ 5. SCREENSHOTS ============ -->
+<section class="section section--plate" id="screenshots" aria-labelledby="screens-title">
+  <div class="wrap">
+    <header class="section__head section__head--row">
+      <div>
+        <p class="eyebrow"><span>04</span>Screenshots</p>
+        <h2 id="screens-title">Straight from the game</h2>
+      </div>
+      <p class="section__hint">Tap any screenshot to enlarge <span class="only-touch">· swipe for more</span></p>
+    </header>
+
+    <ul class="gallery" data-gallery>
+      <li><button class="shot" type="button" data-full="assets/img/shots/l30-finale-lamps-1600.webp" data-caption="Level 30 · The Great Workshop — the hall lights up when the machine completes.">
+        <picture><source type="image/webp" srcset="assets/img/shots/l30-finale-lamps-800.webp"><img src="assets/img/shots/l30-finale-lamps-800.jpg" width="800" height="450" loading="lazy" decoding="async" alt="Level 30 The Great Workshop finale: the main light and hall lamps switched on above a running machine."></picture>
+        <span class="shot__cap">L30 · The Great Workshop</span></button></li>
+      <li><button class="shot" type="button" data-full="assets/img/shots/l20-master-contraption-1600.webp" data-caption="Level 20 · Master Contraption II — power, gravity, ball and crate in one build.">
+        <picture><source type="image/webp" srcset="assets/img/shots/l20-master-contraption-800.webp"><img src="assets/img/shots/l20-master-contraption-800.jpg" width="800" height="360" loading="lazy" decoding="async" alt="Level 20 Master Contraption II: a multi-stage puzzle with a generator, weight tower, heavy gate and domino line."></picture>
+        <span class="shot__cap">L20 · Master Contraption II</span></button></li>
+      <li><button class="shot" type="button" data-full="assets/img/shots/l17-pulley-maze-1600.webp" data-caption="Level 17 · Pulley Maze — route two ropes around the machinery to lift the heavy barrier.">
+        <picture><source type="image/webp" srcset="assets/img/shots/l17-pulley-maze-800.webp"><img src="assets/img/shots/l17-pulley-maze-800.jpg" width="800" height="360" loading="lazy" decoding="async" alt="Level 17 Pulley Maze: ropes routed over pulleys from two weights to lift a gate."></picture>
+        <span class="shot__cap">L17 · Pulley Maze</span></button></li>
+      <li><button class="shot" type="button" data-full="assets/img/shots/l19-factory-line-1600.webp" data-caption="Level 19 · Factory Line — every station must start the next one.">
+        <picture><source type="image/webp" srcset="assets/img/shots/l19-factory-line-800.webp"><img src="assets/img/shots/l19-factory-line-800.jpg" width="800" height="360" loading="lazy" decoding="async" alt="Level 19 Factory Line: feeder conveyor, chute, domino line and crate lift stations."></picture>
+        <span class="shot__cap">L19 · Factory Line</span></button></li>
+      <li><button class="shot" type="button" data-full="assets/img/shots/l05-machine-complete-1600.webp" data-caption="Machine complete — three stars for finishing fast and with few parts.">
+        <picture><source type="image/webp" srcset="assets/img/shots/l05-machine-complete-800.webp"><img src="assets/img/shots/l05-machine-complete-800.jpg" width="800" height="360" loading="lazy" decoding="async" alt="Machine Complete panel for Level 5 Belt Drive with three stars, time and parts used."></picture>
+        <span class="shot__cap">Machine complete · 3 stars</span></button></li>
+      <li><button class="shot" type="button" data-full="assets/img/shots/l26-power-and-weight-1600.webp" data-caption="Level 26 · Power and Weight — the falling weight lifts the gate through your rope and pulley.">
+        <picture><source type="image/webp" srcset="assets/img/shots/l26-power-and-weight-800.webp"><img src="assets/img/shots/l26-power-and-weight-800.jpg" width="800" height="360" loading="lazy" decoding="async" alt="Level 26 Power and Weight: a gear-driven arm, a weight on a hatch and a ball rolling down a ramp."></picture>
+        <span class="shot__cap">L26 · Power and Weight</span></button></li>
+      <li><button class="shot" type="button" data-full="assets/img/shots/l16-gear-bridge-1600.webp" data-caption="Level 16 · Gear Bridge — power lowers the bridge, then the ball can cross.">
+        <picture><source type="image/webp" srcset="assets/img/shots/l16-gear-bridge-800.webp"><img src="assets/img/shots/l16-gear-bridge-800.jpg" width="800" height="360" loading="lazy" decoding="async" alt="Level 16 Gear Bridge: a motor-driven gear lowers a bridge so a ball can reach the goal basket."></picture>
+        <span class="shot__cap">L16 · Gear Bridge</span></button></li>
+      <li><button class="shot" type="button" data-full="assets/img/shots/level-select-1600.webp" data-caption="Level select — two chapters, 30 levels, three stars each.">
+        <picture><source type="image/webp" srcset="assets/img/shots/level-select-800.webp"><img src="assets/img/shots/level-select-800.jpg" width="800" height="360" loading="lazy" decoding="async" alt="Level select screen showing levels 11 to 20 with star ratings and best times."></picture>
+        <span class="shot__cap">Level select</span></button></li>
+      <li><button class="shot" type="button" data-full="assets/img/shots/workshop-crazy-machine-1600.webp" data-caption="Workshop · Crazy Machine demo — open a demo, edit your own copy, save it.">
+        <picture><source type="image/webp" srcset="assets/img/shots/workshop-crazy-machine-800.webp"><img src="assets/img/shots/workshop-crazy-machine-800.jpg" width="800" height="450" loading="lazy" decoding="async" alt="Workshop sandbox running an editable copy of the Crazy Machine demo."></picture>
+        <span class="shot__cap">Workshop · Crazy Machine</span></button></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 6. HOW IT WORKS ============ -->
+<section class="section" id="how-it-works" aria-labelledby="how-title">
+  <div class="wrap">
+    <header class="section__head section__head--center">
+      <p class="eyebrow"><span>05</span>How it works</p>
+      <h2 id="how-title">Three steps. One button.</h2>
+    </header>
+    <ol class="steps">
+      <li class="step">
+        <div class="step__img frame frame--thin">
+          <picture><source type="image/webp" srcset="assets/img/shots/step-build-800.webp"><img src="assets/img/shots/step-build-800.jpg" width="800" height="450" loading="lazy" decoding="async" alt="A small gear being placed onto a generator shaft."></picture>
+        </div>
+        <h3 class="step__title"><span class="step__num" aria-hidden="true">01</span>Build</h3>
+        <p>Place mechanical parts from your tray onto the workshop wall.</p>
+      </li>
+      <li class="step">
+        <div class="step__img frame frame--thin">
+          <picture><source type="image/webp" srcset="assets/img/shots/step-connect-800.webp"><img src="assets/img/shots/step-connect-800.jpg" width="800" height="450" loading="lazy" decoding="async" alt="A rope being routed over two pulleys down to a weight."></picture>
+        </div>
+        <h3 class="step__title"><span class="step__num" aria-hidden="true">02</span>Connect</h3>
+        <p>Link parts with ropes and belts to create your machine.</p>
+      </li>
+      <li class="step">
+        <div class="step__img frame frame--thin">
+          <picture><source type="image/webp" srcset="assets/img/shots/step-play-800.webp"><img src="assets/img/shots/step-play-800.jpg" width="800" height="450" loading="lazy" decoding="async" alt="Machine Complete panel for Level 30 with three stars, a 12.3 second run and 16 parts."></picture>
+        </div>
+        <h3 class="step__title"><span class="step__num step__num--go" aria-hidden="true">03</span>Play</h3>
+        <p>Start the simulation and see if your solution works.</p>
+      </li>
     </ol>
   </div>
 </section>
 
-<section class="cols">
-  <div class="panel">
-    <h3>Audio</h3>
-    <ul class="plain">
-      <li>All sound in both cuts is the game's own. It was recorded with the picture: motor start, gear layer, belt, pulley, rope creak, impacts, spring, switch click, lamp buzz and level complete. The end card uses the game's own <code>lamp_click</code>, <code>lamp_on</code> and room tone. The hook adds the game's <code>motor_start</code> at 55 %.</li>
-      <li>In the 2× sections the sound is sped up with a time-stretch, so pitch stays natural.</li>
-      <li>No music is used. If you add some, look for a minimal, slow industrial pulse around 90–100 BPM. Use a muted kick and low synth bass, with metallic percussion that leaves room for the gear clicks. Bring in one warm pad when the lamps turn on. Use only a track you own or have licensed.</li>
-    </ul>
-  </div>
-  <div class="panel">
-    <h3>Production notes</h3>
-    <ul class="plain">
-      <li>On screen, the gear, pulley, weight, belt and rope are placed live with real mouse input. The other 11 parts of the 16-part machine were already in place when recording started. The run is the game's own known 3-star solution, and the result it shows (12.3 s, 3 stars) is genuine.</li>
-      <li>The soft ring that shows where the finger is was drawn by the recording script. It is not part of the game UI. Mobile trailers normally show a touch marker like this.</li>
-      <li>The run is shown at 2×. It is honest editing, but if store rules or your own preference call for it, add a small "2× SPEED" tag in the corner. Do not slow the lamp finale down.</li>
-      <li>Fonts: Inter Display (OFL) for the overlays. Colours come from <code>scripts/visual/palette.gd</code>: BRASS_LIGHT, LAMP_ON and STEEL_DARKEST.</li>
-      <li>Google Play rules: if this goes on the store listing, store pages usually crop or play the video at 16:9. The end card's "ANDROID" text is not the official Google Play badge. Use the official badge only under Google's badge guidelines.</li>
-    </ul>
+<!-- ============ 7. WORKSHOP / SANDBOX ============ -->
+<section class="section section--plate" id="workshop" aria-labelledby="workshop-title">
+  <div class="wrap split">
+    <figure class="split__media frame">
+      <picture>
+        <source type="image/webp" srcset="assets/img/shots/workshop-crazy-machine-800.webp 800w, assets/img/shots/workshop-crazy-machine-1600.webp 1280w" sizes="(min-width: 960px) 55vw, 100vw">
+        <img src="assets/img/shots/workshop-crazy-machine-800.jpg" width="1280" height="720" loading="lazy" decoding="async"
+             alt="Workshop sandbox: an editable copy of the Crazy Machine demo with gears, pulleys, a fan and a lamp, and an unlimited parts tray.">
+      </picture>
+      <figcaption class="frame__label"><span class="dot" aria-hidden="true"></span>Workshop · Crazy Machine copy</figcaption>
+    </figure>
+    <div class="split__copy">
+      <p class="eyebrow"><span>06</span>Workshop mode</p>
+      <h2 id="workshop-title">Your own sandbox</h2>
+      <p>Outside the campaign, the Workshop gives you a large empty wall and every part in unlimited supply. No goals, no limits — just building.</p>
+      <ul class="checks">
+        <li>Build without campaign restrictions</li>
+        <li>Experiment with different mechanisms</li>
+        <li>Save custom machines</li>
+        <li>Load them later</li>
+        <li>Explore built-in demo machines</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<footer>Recorded from Mechanical Workshop Prototype v0.30 using Godot 4.7.2 Movie Maker (Compatibility renderer). The recording toolkit is attached in the chat: the capture script, cut list and caption generator, so you can re-record after the game changes.</footer>
-</div>
+<!-- ============ 8. CLOSED TESTING ============ -->
+<section class="section" id="testing" aria-labelledby="testing-title">
+  <div class="wrap">
+    <div class="testing">
+      <div class="testing__stripe" aria-hidden="true"></div>
+      <div class="testing__body">
+        <p class="eyebrow"><span>07</span>Closed testing</p>
+        <h2 id="testing-title">Help test Mechanical Workshop</h2>
+        <p>Mechanical Workshop is currently being tested on Android. Real gameplay feedback, bug reports and usability feedback are welcome.</p>
+        <div class="testing__actions">
+          <!-- Opens the tester dialog (#tester-dialog). Behaviour is configured in assets/js/main.js -->
+          <a class="btn btn--lamp" href="#tester-dialog" data-tester-link>
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.4 2.4-2.6-.6-.6-2.6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <span data-cta-label>Become a tester</span>
+          </a>
+          <p class="testing__note">Testing availability is currently limited. Access is granted manually.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</body></html>
+<!-- ============ 9. DEVELOPMENT STATUS ============ -->
+<section class="section section--tight" id="status" aria-labelledby="status-title">
+  <div class="wrap">
+    <div class="status">
+      <div class="status__build">
+        <p class="eyebrow"><span>08</span>Development status</p>
+        <h2 id="status-title" class="visually-hidden">Development status</h2>
+        <p class="status__label">Current build</p>
+        <p class="status__ver">v0.31</p>
+        <p class="status__meta"><span class="dot" aria-hidden="true"></span>Android · closed testing</p>
+      </div>
+      <ul class="status__list">
+        <li>30 campaign levels</li>
+        <li>Workshop Sandbox</li>
+        <li>Beginner tutorial</li>
+        <li>Save/load machines</li>
+        <li>Improved touch controls</li>
+        <li>Physics fixes and usability improvements</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 10. FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <img src="assets/img/favicon.svg" width="40" height="40" alt="" loading="lazy">
+      <div>
+        <p class="footer__studio">MikiForge Studio</p>
+        <p class="footer__game">Mechanical Workshop</p>
+      </div>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer__links">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <!-- Future links — uncomment and paste the real URL when available:
+        <li><a href="PASTE_GOOGLE_PLAY_URL">Google Play</a></li>
+        <li><a href="PASTE_YOUTUBE_URL">YouTube</a></li>
+        <li><a href="PASTE_TIKTOK_URL">TikTok</a></li>
+        -->
+      </ul>
+    </nav>
+    <p class="footer__copy">© 2026 MikiForge Studio. Mechanical Workshop is an original game. Android is a trademark of Google LLC.</p>
+  </div>
+</footer>
+
+<!-- Tester sign-up dialog. Nothing is collected by the website: the button opens the visitor's own email app. -->
+<dialog class="tdlg" id="tester-dialog" aria-labelledby="tdlg-title">
+  <div class="tdlg__panel">
+    <div class="testing__stripe" aria-hidden="true"></div>
+    <button class="tdlg__close" type="button" aria-label="Close" data-tdlg-close>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="tdlg__body">
+      <p class="eyebrow"><span>BETA</span>Android closed test</p>
+      <h2 id="tdlg-title">Help test Mechanical Workshop</h2>
+      <p class="tdlg__lead">Mechanical Workshop is currently in closed testing on Android. Access is granted manually: the Google Play testing link only works <b>after your Google Play account has been added</b> to the tester list.</p>
+
+      <h3 class="tdlg__h">How to join</h3>
+      <ol class="tdlg__steps">
+        <li>Request access using the button below.</li>
+        <li>Send us the Gmail address you use with Google Play.</li>
+        <li>Once your account has been added to the closed test, you will receive the Google Play testing link.</li>
+        <li>Install the game and send us honest gameplay feedback.</li>
+      </ol>
+
+      <h3 class="tdlg__h">We're especially interested in</h3>
+      <ul class="tdlg__tags">
+        <li>Bugs</li><li>Confusing gameplay</li><li>Touch controls</li><li>Physics behaviour</li><li>Level difficulty</li><li>Usability feedback</li>
+      </ul>
+
+      <p class="tdlg__note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>If possible, please stay enrolled in the closed test for at least <b>14&nbsp;days</b>.</span></p>
+
+      <div class="tdlg__actions">
+        <!-- href is rebuilt from TESTER_EMAIL in assets/js/main.js; this static copy is a fallback -->
+        <a class="btn btn--lamp" id="tester-mailto" href="mailto:mikulasik2@gmail.com?subject=Mechanical%20Workshop%20Closed%20Test&amp;body=Hi%20MikiForge%20Studio%2C%0D%0A%0D%0AI%27d%20like%20to%20join%20the%20Mechanical%20Workshop%20Android%20closed%20test.%0D%0A%0D%0AGoogle%20Play%20Gmail%3A%0D%0AAndroid%20device%3A%0D%0AReddit%20username%20%28optional%29%3A%0D%0A%0D%0AI%20can%20stay%20enrolled%20for%20at%20least%2014%20days.%0D%0A%0D%0AThanks%21">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          Request test access
+        </a>
+        <p class="tdlg__fine">Opens your email app with a ready-made message to <a href="mailto:mikulasik2@gmail.com" data-tester-email>mikulasik2@gmail.com</a>. Nothing is stored on this website. See the <a href="privacy.html">Privacy Policy</a>.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- Fullscreen screenshot viewer -->
+<dialog class="viewer" id="viewer" aria-label="Screenshot viewer">
+  <figure class="viewer__fig">
+    <img class="viewer__img" alt="">
+    <figcaption class="viewer__cap"><span class="viewer__count"></span><span class="viewer__text"></span></figcaption>
+  </figure>
+  <button class="viewer__btn viewer__close" type="button" aria-label="Close viewer" data-close>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+  </button>
+  <button class="viewer__btn viewer__prev" type="button" aria-label="Previous screenshot" data-prev>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <button class="viewer__btn viewer__next" type="button" aria-label="Next screenshot" data-next>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</dialog>
+
+<!-- Shared SVG icon symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="gear" viewBox="-50 -50 100 100">
+      <g fill="currentColor">
+        <rect x="-7" y="-46" width="14" height="16" rx="2"/>
+        <rect x="-7" y="-46" width="14" height="16" rx="2" transform="rotate(45)"/>
+        <rect x="-7" y="-46" width="14" height="16" rx="2" transform="rotate(90)"/>
+        <rect x="-7" y="-46" width="14" height="16" rx="2" transform="rotate(135)"/>
+        <rect x="-7" y="-46" width="14" height="16" rx="2" transform="rotate(180)"/>
+        <rect x="-7" y="-46" width="14" height="16" rx="2" transform="rotate(225)"/>
+        <rect x="-7" y="-46" width="14" height="16" rx="2" transform="rotate(270)"/>
+        <rect x="-7" y="-46" width="14" height="16" rx="2" transform="rotate(315)"/>
+        <path fill-rule="evenodd" d="M0-33a33 33 0 1 1 0 66a33 33 0 1 1 0-66zM0-13a13 13 0 1 0 0 26a13 13 0 1 0 0-26z"/>
+      </g>
+    </symbol>
+    <symbol id="i-motor" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><rect x="5" y="14" width="28" height="20" rx="3"/><path d="M33 20h5v8h-5M10 14v20M15 14v20"/><circle cx="41" cy="24" r="3" fill="currentColor"/><path d="M10 34v5h18v-5"/></g></symbol>
+    <symbol id="i-pulley" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5"><path d="M24 4v8"/><path d="M16 4h16"/><circle cx="24" cy="21" r="9"/><circle cx="24" cy="21" r="2.5" fill="currentColor"/><path d="M15 21v22M33 21v12"/><rect x="28" y="33" width="10" height="9" rx="1.5" fill="currentColor"/></g></symbol>
+    <symbol id="i-rope" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="24" r="6"/><circle cx="37" cy="24" r="6"/><path d="M11 18h26M11 30h26"/></g></symbol>
+    <symbol id="i-spring" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"><path d="M8 42h32M8 8h32"/><path d="M12 38l24-4-24-4 24-4-24-4 24-4-24-4 24-4"/></g></symbol>
+    <symbol id="i-weight" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><circle cx="24" cy="9" r="4"/><path d="M15 16h18l6 26H9z" fill="currentColor" fill-opacity=".25"/></g><text x="24" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="system-ui,sans-serif">KG</text></symbol>
+    <symbol id="i-switch" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"><rect x="6" y="28" width="36" height="12" rx="2"/><path d="M24 28L34 10"/><circle cx="34" cy="10" r="4" fill="currentColor"/><circle cx="13" cy="34" r="2" fill="currentColor"/></g></symbol>
+    <symbol id="i-fan" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><rect x="5" y="5" width="38" height="38" rx="4"/><path d="M24 24c0-8 3-12 8-12s4 7-8 12zM24 24c8 0 12 3 12 8s-7 4-12-8zM24 24c0 8-3 12-8 12s-4-7 8-12zM24 24c-8 0-12-3-12-8s7-4 12 8z" fill="currentColor" fill-opacity=".3"/></g></symbol>
+    <symbol id="i-plank" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><path d="M4 30l26-14 3 5L7 35z" fill="currentColor" fill-opacity=".25"/><circle cx="38" cy="12" r="5" fill="currentColor"/><rect x="31" y="31" width="4" height="12"/><rect x="39" y="31" width="4" height="12"/></g></symbol>
+    <symbol id="i-levels" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><rect x="5" y="5" width="16" height="16" rx="2"/><rect x="27" y="5" width="16" height="16" rx="2"/><rect x="5" y="27" width="16" height="16" rx="2"/><path d="M35 27l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill="currentColor"/></g></symbol>
+    <symbol id="i-wrench" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"><path d="M29 7a9 9 0 0 0-10 12L6 32l4 4 6 6 13-13a9 9 0 0 0 12-10l-6 6-6-1-1-6z"/><path d="M33 33l9 9M37 29l5 5" opacity=".6"/></g></symbol>
+    <symbol id="i-save" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><path d="M7 7h28l6 6v28H7z"/><rect x="14" y="7" width="16" height="10"/><rect x="13" y="26" width="22" height="15"/><path d="M17 31h14M17 36h10"/></g></symbol>
+    <symbol id="i-branch" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="24" r="4"/><circle cx="38" cy="10" r="4"/><circle cx="38" cy="24" r="4"/><circle cx="38" cy="38" r="4"/><path d="M14 24h20M14 23c8 0 8-13 20-13M14 25c8 0 8 13 20 13"/></g></symbol>
+    <symbol id="i-touch" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"><rect x="12" y="3" width="24" height="42" rx="4"/><path d="M20 39h8"/><circle cx="24" cy="20" r="5" fill="currentColor" fill-opacity=".3"/><circle cx="24" cy="20" r="10" opacity=".5"/></g></symbol>
+  </defs>
+</svg>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
