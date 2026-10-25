@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mechanical Workshop – Physics Puzzle &amp; Machine Building Game</title>
-<meta name="description" content="Mechanical Workshop is a physics puzzle and machine-building game for Android by MikiForge Studio. Build working contraptions with gears, motors, pulleys, ropes, springs and weights, then press PLAY.">
+<meta name="description" content="Mechanical Workshop is a physics puzzle and machine-building game by MikiForge Studio: 40 levels of gears, motors, pulleys, ropes and springs. Play the free browser demo now; the Android game is in closed beta.">
 <meta name="author" content="MikiForge Studio">
 <meta name="theme-color" content="#0e1114">
 <meta name="color-scheme" content="dark">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mechanical Workshop">
 <meta property="og:title" content="Mechanical Workshop – Physics Puzzle &amp; Machine Building Game">
-<meta property="og:description" content="Build it. Connect it. Press PLAY. A physics puzzle game for Android where you build working machines from gears, motors, pulleys, ropes, springs and weights.">
+<meta property="og:description" content="Build it. Connect it. Press PLAY. Build working machines from gears, motors, pulleys, ropes and springs. Play 5 levels free in your browser; the 40-level Android game is in closed beta.">
 <meta property="og:url" content="https://mikulasik2.github.io/mechanical-workshop/">
 <meta property="og:image" content="https://mikulasik2.github.io/mechanical-workshop/assets/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
 <meta property="og:image:alt" content="Mechanical Workshop gameplay: a running machine of gears, belts, pulleys and lit lamps">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mechanical Workshop – Physics Puzzle &amp; Machine Building Game">
-<meta name="twitter:description" content="Build it. Connect it. Press PLAY. A physics machine-building puzzle game for Android.">
+<meta name="twitter:description" content="Build it. Connect it. Press PLAY. Play the free browser demo of this physics machine-building puzzle game.">
 <meta name="twitter:image" content="https://mikulasik2.github.io/mechanical-workshop/assets/img/og-image.jpg">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -41,9 +41,10 @@
   "name": "Mechanical Workshop",
   "url": "https://mikulasik2.github.io/mechanical-workshop/",
   "image": "https://mikulasik2.github.io/mechanical-workshop/assets/img/og-image.jpg",
-  "description": "A physics puzzle and machine-building game where you create working mechanical contraptions using gears, motors, pulleys, ropes, springs, weights and more.",
+  "description": "A physics puzzle and machine-building game with 40 campaign levels and a Workshop sandbox, where you create working mechanical contraptions using gears, motors, pulleys, ropes, springs, weights and more. A free five-level demo runs in the browser; the Android game is in closed beta.",
   "genre": ["Puzzle", "Physics", "Simulation"],
-  "gamePlatform": "Android",
+  "gamePlatform": ["Android", "Web browser"],
+  "playMode": "SinglePlayer",
   "operatingSystem": "Android",
   "applicationCategory": "Game",
   "author": { "@type": "Organization", "name": "MikiForge Studio" },
@@ -64,13 +65,13 @@
     <nav aria-label="Main">
       <ul class="nav__links">
         <li><a href="#gameplay">Gameplay</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#demo">Free demo</a></li>
         <li><a href="#features">Features</a></li>
-        <li><a href="#screenshots">Screenshots</a></li>
         <li><a href="#workshop">Workshop</a></li>
+        <li><a href="#testing">Closed beta</a></li>
       </ul>
     </nav>
-    <a class="btn btn--small" href="#tester-dialog" data-tester-link><span data-cta-label-short><span class="hide-sm">Become a&nbsp;</span>tester</span></a>
+    <a class="btn btn--small" href="#testing"><span class="hide-sm">Become a&nbsp;</span>tester</a>
   </div>
 </header>
 
@@ -81,17 +82,18 @@
   <svg class="hero__gear" viewBox="0 0 100 100" aria-hidden="true"><use href="#gear"/></svg>
   <div class="wrap hero__grid">
     <div class="hero__copy">
-      <p class="badge"><span class="badge__lamp" aria-hidden="true"></span>Android • Closed testing</p>
+      <p class="badge"><span class="badge__lamp" aria-hidden="true"></span>Free web demo • Android closed beta</p>
       <h1 id="hero-title" class="hero__title">Mechanical<br><span>Workshop</span></h1>
       <p class="hero__tagline">Build it. Connect it. Press&nbsp;<em>PLAY</em>.</p>
-      <p class="hero__lead">A physics puzzle and machine-building game where you create working mechanical contraptions using gears, motors, pulleys, ropes, springs, weights and more.</p>
+      <p class="hero__lead">A physics puzzle and machine-building game. Combine gears, motors, pulleys, ropes, springs and weights into working contraptions across 40 hand-crafted levels.</p>
       <div class="hero__actions">
-        <a class="btn" href="#gameplay" data-play-trailer>
+        <a class="btn btn--lamp" href="./demo/">
           <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-          Watch gameplay
+          Play free demo
         </a>
-        <a class="btn btn--ghost" href="#about">About the game</a>
+        <a class="btn btn--ghost" href="#gameplay" data-play-trailer>Watch gameplay</a>
       </div>
+      <p class="hero__note">Runs in your browser: no download, no account. <a href="#about">About the game</a></p>
       <p class="hero__by">by <b>MikiForge Studio</b></p>
     </div>
     <figure class="hero__shot frame">
@@ -125,14 +127,50 @@
   </div>
 </section>
 
+<!-- ============ 2b. FREE WEB DEMO ============ -->
+<section class="section section--plate" id="demo" aria-labelledby="demo-title">
+  <div class="wrap split split--demo">
+    <a class="demo-card frame" href="./demo/" aria-label="Play the free Mechanical Workshop demo in your browser">
+      <picture>
+        <source type="image/webp" srcset="assets/img/shots/l19-factory-line-800.webp 800w, assets/img/shots/l19-factory-line-1600.webp 1600w" sizes="(min-width: 960px) 55vw, 100vw">
+        <img src="assets/img/shots/l19-factory-line-800.jpg" width="1600" height="720" loading="lazy" decoding="async" alt="">
+      </picture>
+      <span class="demo-card__play" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      </span>
+      <span class="frame__label"><span class="dot" aria-hidden="true"></span>Browser demo · 5 levels</span>
+    </a>
+    <div class="split__copy">
+      <p class="eyebrow"><span>02</span>Free web demo</p>
+      <h2 id="demo-title">Play the demo right now</h2>
+      <p>Five hand-picked levels from all three chapters of the campaign, built from the same game as the Android version, in your browser.</p>
+      <ul class="checks">
+        <li>5 campaign levels: 1, 10, 18, 24 and 33</li>
+        <li>Beginner tutorial on the first level</li>
+        <li>The same physics and sound effects as the full game</li>
+        <li>Mouse controls on desktop, touch on tablets and phones</li>
+        <li>Your progress is saved in your browser</li>
+      </ul>
+      <div class="demo__actions">
+        <a class="btn btn--lamp" href="./demo/">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          Play free demo
+        </a>
+        <p class="demo__note">Best on a computer or tablet. On phones, play in landscape. The first start can take a few seconds while the game loads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 3. ABOUT ============ -->
-<section class="section section--plate" id="about" aria-labelledby="about-title">
+<section class="section" id="about" aria-labelledby="about-title">
   <div class="wrap about">
     <div class="about__copy">
-      <p class="eyebrow"><span>02</span>About the game</p>
+      <p class="eyebrow"><span>03</span>About the game</p>
       <h2 id="about-title">A puzzle you solve with machinery</h2>
       <p>Mechanical Workshop is a physics-based puzzle game where you solve mechanical challenges by placing and connecting machine parts.</p>
-      <p>Each level hands you a goal and a tray of parts. Mesh gears, power them with a motor, route a rope over pulleys, let a weight fall, launch a crate off a spring and hit the switch that lights the room. If it fails — tweak, and try again.</p>
+      <p>Each level hands you a goal and a tray of parts. Mesh gears, power them with a motor, route a rope over pulleys, let a weight fall, launch a crate off a spring and hit the switch that lights the room. If it fails, adjust and try again.</p>
+      <p>The campaign spans 40 levels in three chapters, from a single gear to multi-stage machines that run a whole factory. Between levels, the Workshop sandbox lets you build whatever you can imagine.</p>
       <p class="about__kicker">There's no single right answer. Just mechanical experimentation.</p>
     </div>
 
@@ -151,17 +189,17 @@
 </section>
 
 <!-- ============ 4. FEATURES ============ -->
-<section class="section" id="features" aria-labelledby="features-title">
+<section class="section section--plate" id="features" aria-labelledby="features-title">
   <div class="wrap">
     <header class="section__head">
-      <p class="eyebrow"><span>03</span>Features</p>
+      <p class="eyebrow"><span>04</span>Features</p>
       <h2 id="features-title">What's in the workshop</h2>
     </header>
     <ul class="features">
       <li class="card">
         <span class="card__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-levels"/></svg></span>
-        <h3>30 Puzzle Levels</h3>
-        <p>Hand-crafted campaign challenges across two chapters, from a first gear to five-stage machines.</p>
+        <h3>40 Puzzle Levels</h3>
+        <p>A hand-crafted campaign in three chapters, from your first gear to the Final Assembly.</p>
       </li>
       <li class="card">
         <span class="card__icon"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#gear"/></svg></span>
@@ -193,11 +231,11 @@
 </section>
 
 <!-- ============ 5. SCREENSHOTS ============ -->
-<section class="section section--plate" id="screenshots" aria-labelledby="screens-title">
+<section class="section" id="screenshots" aria-labelledby="screens-title">
   <div class="wrap">
     <header class="section__head section__head--row">
       <div>
-        <p class="eyebrow"><span>04</span>Screenshots</p>
+        <p class="eyebrow"><span>05</span>Screenshots</p>
         <h2 id="screens-title">Straight from the game</h2>
       </div>
       <p class="section__hint">Tap any screenshot to enlarge <span class="only-touch">· swipe for more</span></p>
@@ -225,7 +263,7 @@
       <li><button class="shot" type="button" data-full="assets/img/shots/l16-gear-bridge-1600.webp" data-caption="Level 16 · Gear Bridge — power lowers the bridge, then the ball can cross.">
         <picture><source type="image/webp" srcset="assets/img/shots/l16-gear-bridge-800.webp"><img src="assets/img/shots/l16-gear-bridge-800.jpg" width="800" height="360" loading="lazy" decoding="async" alt="Level 16 Gear Bridge: a motor-driven gear lowers a bridge so a ball can reach the goal basket."></picture>
         <span class="shot__cap">L16 · Gear Bridge</span></button></li>
-      <li><button class="shot" type="button" data-full="assets/img/shots/level-select-1600.webp" data-caption="Level select — two chapters, 30 levels, three stars each.">
+      <li><button class="shot" type="button" data-full="assets/img/shots/level-select-1600.webp" data-caption="Level select — every level has three stars to earn: finish it, beat the target time, use few parts.">
         <picture><source type="image/webp" srcset="assets/img/shots/level-select-800.webp"><img src="assets/img/shots/level-select-800.jpg" width="800" height="360" loading="lazy" decoding="async" alt="Level select screen showing levels 11 to 20 with star ratings and best times."></picture>
         <span class="shot__cap">Level select</span></button></li>
       <li><button class="shot" type="button" data-full="assets/img/shots/workshop-crazy-machine-1600.webp" data-caption="Workshop · Crazy Machine demo — open a demo, edit your own copy, save it.">
@@ -236,10 +274,10 @@
 </section>
 
 <!-- ============ 6. HOW IT WORKS ============ -->
-<section class="section" id="how-it-works" aria-labelledby="how-title">
+<section class="section section--plate" id="how-it-works" aria-labelledby="how-title">
   <div class="wrap">
     <header class="section__head section__head--center">
-      <p class="eyebrow"><span>05</span>How it works</p>
+      <p class="eyebrow"><span>06</span>How it works</p>
       <h2 id="how-title">Three steps. One button.</h2>
     </header>
     <ol class="steps">
@@ -269,7 +307,7 @@
 </section>
 
 <!-- ============ 7. WORKSHOP / SANDBOX ============ -->
-<section class="section section--plate" id="workshop" aria-labelledby="workshop-title">
+<section class="section" id="workshop" aria-labelledby="workshop-title">
   <div class="wrap split">
     <figure class="split__media frame">
       <picture>
@@ -280,9 +318,9 @@
       <figcaption class="frame__label"><span class="dot" aria-hidden="true"></span>Workshop · Crazy Machine copy</figcaption>
     </figure>
     <div class="split__copy">
-      <p class="eyebrow"><span>06</span>Workshop mode</p>
+      <p class="eyebrow"><span>07</span>Workshop mode</p>
       <h2 id="workshop-title">Your own sandbox</h2>
-      <p>Outside the campaign, the Workshop gives you a large empty wall and every part in unlimited supply. No goals, no limits — just building.</p>
+      <p>Outside the campaign, the Workshop gives you a large empty wall and every part in unlimited supply. There are no goals and no limits. The Workshop is part of the full Android game.</p>
       <ul class="checks">
         <li>Build without campaign restrictions</li>
         <li>Experiment with different mechanisms</li>
@@ -300,16 +338,17 @@
     <div class="testing">
       <div class="testing__stripe" aria-hidden="true"></div>
       <div class="testing__body">
-        <p class="eyebrow"><span>07</span>Closed testing</p>
-        <h2 id="testing-title">Help test Mechanical Workshop</h2>
-        <p>Mechanical Workshop is currently being tested on Android. Real gameplay feedback, bug reports and usability feedback are welcome.</p>
+        <p class="eyebrow"><span>08</span>Closed beta</p>
+        <h2 id="testing-title">Become a beta tester</h2>
+        <p>The full Android game, with 40 levels and the Workshop sandbox, is in a closed beta on Google Play. We are looking for players who will try it on their own phones and tell us honestly what works and what doesn't.</p>
+        <p>Testers are enrolled by hand. The Google Play testing page only opens after your Google account has been added to the tester list. Request access below and we will send you the link.</p>
         <div class="testing__actions">
           <!-- Opens the tester dialog (#tester-dialog). Behaviour is configured in assets/js/main.js -->
           <a class="btn btn--lamp" href="#tester-dialog" data-tester-link>
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.4 2.4-2.6-.6-.6-2.6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             <span data-cta-label>Become a tester</span>
           </a>
-          <p class="testing__note">Testing availability is currently limited. Access is granted manually.</p>
+          <p class="testing__note">Places are limited and access is granted manually. Not ready to commit? <a href="./demo/">Play the free web demo</a> first.</p>
         </div>
       </div>
     </div>
@@ -321,19 +360,19 @@
   <div class="wrap">
     <div class="status">
       <div class="status__build">
-        <p class="eyebrow"><span>08</span>Development status</p>
+        <p class="eyebrow"><span>09</span>Development status</p>
         <h2 id="status-title" class="visually-hidden">Development status</h2>
         <p class="status__label">Current build</p>
-        <p class="status__ver">v0.31</p>
-        <p class="status__meta"><span class="dot" aria-hidden="true"></span>Android · closed testing</p>
+        <p class="status__ver">v0.33</p>
+        <p class="status__meta"><span class="dot" aria-hidden="true"></span>Android · closed beta</p>
       </div>
       <ul class="status__list">
-        <li>30 campaign levels</li>
-        <li>Workshop Sandbox</li>
+        <li>40 campaign levels in three chapters</li>
+        <li>New Chapter 3: Master Mechanic (levels 31–40)</li>
+        <li>Free five-level web demo</li>
+        <li>Workshop sandbox with save/load</li>
         <li>Beginner tutorial</li>
-        <li>Save/load machines</li>
-        <li>Improved touch controls</li>
-        <li>Physics fixes and usability improvements</li>
+        <li>Fixes from closed-beta feedback</li>
       </ul>
     </div>
   </div>
@@ -353,6 +392,8 @@
     </div>
     <nav aria-label="Footer">
       <ul class="footer__links">
+        <li><a href="./demo/">Play the demo</a></li>
+        <li><a href="#testing">Closed beta</a></li>
         <li><a href="privacy.html">Privacy Policy</a></li>
         <!-- Future links — uncomment and paste the real URL when available:
         <li><a href="PASTE_GOOGLE_PLAY_URL">Google Play</a></li>
