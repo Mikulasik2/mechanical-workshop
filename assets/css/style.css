@@ -111,10 +111,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .nav__links { display: none; gap: 4px; }
 .nav__links a { white-space: nowrap; display: block; padding: 8px 12px; color: var(--dim); text-decoration: none; font: 600 .95rem/1 var(--f-display); font-stretch: condensed; letter-spacing: .12em; text-transform: uppercase; border-radius: 3px; }
 .nav__links a:hover { color: var(--brass-l); background: var(--panel); }
+.only-sm { display: none; }
 @media (max-width: 599px) {
   .hide-sm { display: none; }
+  .only-sm { display: inline; }
   .brand { min-width: 0; }
-  .brand span { font-size: .95rem; letter-spacing: .05em; }
+  .brand span { font-size: .9rem; letter-spacing: .05em; flex-direction: column; gap: 1px; line-height: 1; }
 }
 @media (max-width: 360px) { .brand span b { display: none; } }
 
@@ -211,6 +213,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   z-index: -1; pointer-events: none;
 }
 
+/* Google Play buttons */
+.btn__stack { display: grid; text-align: left; line-height: 1.05; }
+.btn__stack small { font: 600 .66rem/1.1 var(--f-mono); letter-spacing: .14em; opacity: .8; }
+.btn--store { padding-block: 9px; }
+.btn--store .ico { width: 22px; height: 22px; }
+.btn--small .ico { width: 16px; height: 16px; }
+.status__store { margin-top: 18px; }
+.demo__more { color: #c3c9cf; }
+.demo__more a { color: var(--brass-l); font-weight: 600; }
 .hero__note { margin-top: 14px; color: var(--dim); font-size: .92rem; }
 .hero__note a { color: var(--brass-l); margin-left: 6px; white-space: nowrap; }
 

@@ -25,16 +25,10 @@ const TESTER_EMAIL_BODY = [
   "Thanks!"
 ].join("\r\n");
 
-/* AFTER PUBLIC RELEASE: paste the public Google Play store URL here,
-   e.g. "https://play.google.com/store/apps/details?id=com.mechanicalworkshop.game".
-   While empty, the "Become a tester" buttons open the tester dialog.
-   When filled, every tester button turns into a "Get it on Google Play" link
-   and the dialog is no longer used.
-   Never put the closed-test opt-in link here: people who are not on the
-   tester list would only see "App not available". */
-const PLAY_STORE_URL = "";
-const PLAY_STORE_LABEL = "Get it on Google Play";
-const PLAY_STORE_LABEL_SHORT = "Google Play";
+/* GOOGLE PLAY: the app's package id. Every button marked data-store-link uses it.
+   Desktop / iPhone: opens the Google Play web page (new tab).
+   Android: opens the Play Store APP directly on the game's page (see openStore below). */
+const PLAY_PACKAGE_ID = "com.mikiforgestudio.mechanicalworkshop";
 
 /* ▲▲▲  END OF SETTINGS  ▲▲▲ */
 
@@ -45,7 +39,6 @@ const PLAY_STORE_LABEL_SHORT = "Google Play";
   /* ---------- Tester sign-up / release CTA ---------- */
   const testerLinks = document.querySelectorAll("[data-tester-link]");
   const tdlg = document.getElementById("tester-dialog");
-  const playUrl = (PLAY_STORE_URL || "").trim();
 
   function buildMailto() {
     return "mailto:" + TESTER_EMAIL +
@@ -53,16 +46,7 @@ const PLAY_STORE_LABEL_SHORT = "Google Play";
       "&body=" + encodeURIComponent(TESTER_EMAIL_BODY);
   }
 
-  if (playUrl) {
-    // Released: every tester button becomes a store link.
-    testerLinks.forEach(function (a) {
-      a.href = playUrl; a.target = "_blank"; a.rel = "noopener";
-      const l = a.querySelector("[data-cta-label]");
-      const ls = a.querySelector("[data-cta-label-short]");
-      if (l) l.textContent = PLAY_STORE_LABEL;
-      if (ls) ls.textContent = PLAY_STORE_LABEL_SHORT;
-    });
-  } else if (tdlg && typeof tdlg.showModal === "function") {
+  if (tdlg && typeof tdlg.showModal === "function") {
     const mail = document.getElementById("tester-mailto");
     if (mail) mail.href = buildMailto();
     document.querySelectorAll("[data-tester-email]").forEach(function (a) {
@@ -88,6 +72,53 @@ const PLAY_STORE_LABEL_SHORT = "Google Play";
       if (tdlgOpener) tdlgOpener.focus();
     });
   }
+
+  /* ---------- Google Play buttons ----------
+     A plain https link to play.google.com works everywhere, but on Android some
+     browsers and most in-app browsers (Facebook, Instagram, TikTok, Messenger...)
+     show the WEB page of the store, where installing is awkward. So on Android:
+       - normal browsers (Chrome, Samsung Internet, Firefox, Edge, Opera):
+         an intent:// link that opens the Play Store app directly; if the Play
+         Store app is missing, the browser falls back to the web page by itself;
+       - in-app browsers: market:// (handled by the Play Store app); if nothing
+         happens within 1.5 s, the web page opens instead.
+     Without JavaScript the button is still the normal https link. */
+  const storeWeb = "https://play.google.com/store/apps/details?id=" + PLAY_PACKAGE_ID;
+  const storeMarket = "market://details?id=" + PLAY_PACKAGE_ID;
+  const storeIntent = "intent://details?id=" + PLAY_PACKAGE_ID +
+    "#Intent;scheme=market;package=com.android.vending;" +
+    "S.browser_fallback_url=" + encodeURIComponent(storeWeb) + ";end";
+  const ua = navigator.userAgent || "";
+  const isAndroid = /Android/i.test(ua);
+  const inAppBrowser = /FBAN|FBAV|FB_IAB|FBIOS|Instagram|musical_ly|TikTok|BytedanceWebview|Snapchat|Line\/|Pinterest|; wv\)/i.test(ua);
+
+  function openStore() {
+    if (!inAppBrowser) {
+      window.location.href = storeIntent;
+      return;
+    }
+    let left = false;
+    const onHide = function () { if (document.hidden) left = true; };
+    document.addEventListener("visibilitychange", onHide);
+    window.location.href = storeMarket;
+    setTimeout(function () {
+      document.removeEventListener("visibilitychange", onHide);
+      if (!left && !document.hidden) window.location.href = storeWeb;
+    }, 1500);
+  }
+
+  document.querySelectorAll("[data-store-link]").forEach(function (a) {
+    a.href = storeWeb;
+    if (isAndroid) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        openStore();
+      });
+    } else {
+      a.target = "_blank";
+      a.rel = "noopener";
+    }
+  });
 
   /* ---------- "Watch gameplay" scrolls to the player and starts it ---------- */
   const trailer = document.getElementById("trailer");
